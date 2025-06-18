@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Shred Shed</title>
+    <link rel="stylesheet" href="/styles/default.css">
+</head>
+<body>
+    <%- include('partials/header') %> 
+
+    <main>
+        <section class="error-page">
+            <h1>404</h1>
+            <h2>Oops! The page you're looking for doesn't exist.</h2>
+            <p>It looks like the page you’re trying to reach is not available. Please check the URL or go back to the home page.</p>
+            <button onclick="location.href='/'" class="cta-button">Go to Home</button>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %> 
+</body>
+</html>

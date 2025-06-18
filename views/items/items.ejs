@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Snowboards - Shred Shed</title>
+    <link rel="stylesheet" href="/styles/default.css">
+</head>
+<body>
+    <%- include('../partials/header') %> 
+
+    <main>
+        <section class="items-page">
+            <h2>Browse Snowboards</h2>
+            <div class="items-list">
+                <% if (items.length > 0) { %>
+                    <% items.forEach(item => { %>
+                        <div class="item">
+                            <img src="<%= item.image %>" alt="<%= item.title %>">
+                            <h3><a href="/items/<%= item._id %>"><%= item.title %></a></h3>
+                            <p>Condition: <%= item.condition %></p>
+                            <p>Price: $<%= item.price %></p>
+                            <p>Seller: <%= item.user.firstName %> <%= item.user.lastName %></p>
+                            <p>Total Offers: <%= item.totalOffers %></p>
+                            <a href="/items/<%= item.id %>" class="details-link">View Details</a>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>No items found for your search.</p>
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %> 
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Node modules (don't upload dependencies)
+node_modules/
+
+# Environment variables (keep secrets private)
+.env
+
+# Log files
+*.log
+
+# OS and editor-specific
+.DS_Store
+Thumbs.db
+
+# Optional: VS Code settings (personal config)
+.vscode/
+
+# Build and cache files
+dist/
+.cache/

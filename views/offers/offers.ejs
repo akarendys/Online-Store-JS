@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers for <%= item.title %></title>
+    <link rel="stylesheet" href="/styles/default.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+        <h2>Offers for <%= item.title %></h2>
+        <% if (offers.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Buyer</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <% if (item.active) { %>
+                            <th>Action</th>
+                        <% } %>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% offers.forEach(offer => { %>
+                        <tr>
+                            <td><%= offer.user.firstName %> <%= offer.user.lastName %></td>
+                            <td>$<%= offer.amount %></td>
+                            <td><%= offer.status %></td>
+                            <% if (item.active) { %>
+                                <td>
+                                    <form action="/items/<%= item._id %>/offers/<%= offer._id %>/accept" method="POST" style="display: inline;">
+                                        <button type="submit" class="btn btn-success">Accept</button>
+                                    </form>
+                                </td>
+                            <% } %>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No offers received yet.</p>
+        <% } %>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

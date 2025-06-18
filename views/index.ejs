@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shred Shed</title>
+    <link rel="stylesheet" href="/styles/default.css">
+</head>
+<body>
+    <%- include('partials/header') %> 
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Shred Shed</h1>
+                <p>Your ultimate destination for the latest and greatest snowboards.</p>
+                <button onclick="location.href='/items'" class="cta-button">Explore Our Collection</button>
+            </div>
+        </section>
+
+        <section class="featured-items">
+            <h2>Featured Snowboards</h2>
+            <div class="items-list">
+                <div class="item">
+                    <img src="/images/snowboard1.jpg" alt="Snowboard 1">
+                    <h3>Shredder Pro 3000</h3>
+                    <p>Condition: New</p>
+                    <p>Price: $499</p>
+                </div>
+                <div class="item">
+                    <img src="/images/snowboard2.jpg" alt="Snowboard 2">
+                    <h3>Mountain Crusher</h3>
+                    <p>Condition: Used</p>
+                    <p>Price: $350</p>
+                </div>
+                <div class="item">
+                    <img src="/images/snowboard3.jpg" alt="Snowboard 3">
+                    <h3>Glacier Glider X</h3>
+                    <p>Condition: New</p>
+                    <p>Price: $450</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %> 
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="/styles/default.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+        <h1>Profile</h1>
+        <p>Email: <%= user.email %></p>
+        <p>Name: <%= user.firstName %> <%= user.lastName %></p>
+
+        <h2>My Listings</h2>
+
+        <% if (items.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% items.forEach(item => { %>
+                        <tr>
+                            <td><%= item.title %></td>
+                            <td><%= item.condition %></td>
+                            <td>$<%= item.price.toFixed(2) %></td>
+                            <td><%= item.active ? 'active' : 'inactive' %></td>
+                            <td>
+                                <form action="/items/<%= item._id %>/edit" method="GET" style="display: inline;">
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
+                                <form action="/items/<%= item._id %>/delete" method="POST" style="display: inline;">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                                <form action="/items/<%= item._id %>/offers" method="GET" style="display: inline;">
+                                    <button type="submit" class="btn btn-info" <%= item.totalOffers > 0 ? '' : 'disabled' %>>View Offers</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No items listed yet.</p>
+        <% } %>
+
+        <h2>My Offers</h2>
+        <% if (offers && offers.length > 0) { %>
+            <% offers.forEach(offer => { %>
+                <div>
+                    <p><strong>Item:</strong> <a href="/items/<%= offer.item._id %>"><%= offer.item.title %></a></p>
+                    <p><strong>Amount:</strong> $<%= offer.amount %></p>
+                    <p><strong>Status:</strong> <%= offer.status %></p>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No offers made yet.</p>
+        <% } %>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

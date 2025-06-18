@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item - Shred Shed</title>
+    <link rel="stylesheet" href="/styles/default.css">
+</head>
+<body>
+    <%- include('../partials/header') %>
+
+    <main>
+        <section class="edit-item-container">
+            <h2>Edit Item - <%= item.title %></h2>
+            <form action="/items/<%= item.id %>/edit" method="POST" enctype="multipart/form-data">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="<%= item.title %>" required>
+            
+                <label for="seller">Seller: </label>
+                <input type="text" id="seller" value="<%= sellerName %>" readonly>
+                            
+                <label for="condition">Condition:</label>
+                <select id="condition" name="condition" required>
+                    <option value="New" <%= item.condition === 'New' ? 'selected' : '' %>>New</option>
+                    <option value="Used" <%= item.condition === 'Used' ? 'selected' : '' %>>Used</option>
+                    <option value="Good" <%= item.condition === 'Good' ? 'selected' : '' %>>Good</option>
+                    <option value="Fair" <%= item.condition === 'Fair' ? 'selected' : '' %>>Fair</option>
+                    <option value="Poor" <%= item.condition === 'Poor' ? 'selected' : '' %>>Poor</option>
+                </select>
+            
+                <label for="price">Price:</label>
+                <input type="number" name="price" id="price" value="<%= item.price %>" step="0.01" min="0.01" required>
+            
+                <label for="details">Details:</label>
+                <textarea id="details" name="details" required><%= item.details %></textarea>
+            
+                <!-- Display the current image -->
+                <label>Current Image:</label><br>
+                <img src="<%= item.image %>" alt="<%= item.title %>" style="max-width: 300px;"><br><br>
+            
+                <!-- Hidden input to retain the current image path -->
+                <input type="hidden" name="existingImage" value="<%= item.image %>">
+            
+                <label for="image">Change Image:</label>
+                <input type="file" id="image" name="image"><br>
+                <small>Leave blank to keep the current image.</small><br><br>
+            
+                <label for="active">Active:</label>
+                <input type="checkbox" id="active" name="active" <%= item.active ? 'checked' : '' %>>
+            
+                <label for="offersReceived">Offers Received:</label>
+                <p id="offersReceived"><%= item.totalOffers %></p>
+
+                <div class="button-container">
+                    <button type="submit">Update Item</button>
+                </div>
+            </form>            
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>
