@@ -45,5 +45,3 @@ Online-Store-JS/
 
 
 ```
-
-# Online-Store-JS
