@@ -45,33 +45,5 @@ Online-Store-JS/
 
 
 ```
-## Setup Instructions
-
-1. **Clone the Repository**
-
-```
-   git clone https://github.com/akarendys/Online-Store-JS.git
-   cd Online-Store-JS
-  ``` 
-2. **Install Dependencies**
- ```
-   npm install
-   ```
-
-4. **Configure Environment Variables**
-```
-   Create a .env file with your MongoDB URI:
-   MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority
-   ```
-
-6. **Run the App**
-```
-   npm start
-   ```
-
-8. **Visit:**
-```
-   http://localhost:3000
-   ```
 
 # Online-Store-JS
